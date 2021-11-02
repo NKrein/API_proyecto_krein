@@ -10,16 +10,21 @@ const app = express()
 
 //--------------------------------------------------------------------- Settings
 //Handlebars
-app.engine('handlebars', handlebars({
-    extname: 'handlebars',
-    defaultLayout: 'index.handlebars',
-    layoutsDir: __dirname + '/views/hbs',
-    partialsDir: __dirname + '/views/hbs/partials'
-  })
-);
+// app.engine('handlebars', handlebars({
+//     extname: 'handlebars',
+//     defaultLayout: 'index.handlebars',
+//     layoutsDir: __dirname + '/views/hbs',
+//     partialsDir: __dirname + '/views/hbs/partials'
+//   })
+// );
 
-app.set('views', './views/hbs');
-app.set('view engine', 'handlebars');
+// app.set('views', './views/hbs');
+// app.set('view engine', 'handlebars');
+
+//Pug
+app.set('views', './views/pug');
+app.set('view engine', 'pug');
+
 
 //--------------------------------------------------------------------- Middlewares
 app.use(cors('*'));
@@ -33,23 +38,6 @@ const PORT = 8088;
 //--------------------------------------------------------------------- Routes
 serverRoutes(app);
 
-// app.get('/', (req, res) => {
-//   let data = [{
-//     title:"product1",
-//     price:"123",
-//     stock:"0",
-//     thumbnail:"url1",
-//     id:"1"
-//   },
-//   {
-//     title:"product2",
-//     price:"123",
-//     stock:"2",
-//     thumbnail:"url2",
-//     id:"2"
-//   }]
-//   res.render('index', { products: data });
-// })
 
 //--------------------------------------------------------------------- Listen
 app.listen(PORT, () => {
