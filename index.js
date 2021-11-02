@@ -22,8 +22,11 @@ const app = express()
 // app.set('view engine', 'handlebars');
 
 //Pug
-app.set('views', './views/pug');
-app.set('view engine', 'pug');
+// app.set('views', './views/pug');
+// app.set('view engine', 'pug');
+
+//EJS
+app.set('view engine', 'ejs');
 
 
 //--------------------------------------------------------------------- Middlewares

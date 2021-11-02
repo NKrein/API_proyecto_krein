@@ -12,7 +12,7 @@ function serverRoutes(app) {
   router.get('/', (req, res) => {
     const allProducts = db.getAll();
     allProducts.then(response => {
-      res.render('index', { products: response });
+      res.render('ejs/index', { products: response });
     }).catch(err => console.log('Error ->', err));
   })
 
@@ -22,7 +22,7 @@ function serverRoutes(app) {
     const object = db.getById(id);
     object.then(response => {
       if (response) {
-        res.render('index', { products: [response] });
+        res.render('ejs/index', { products: [response] });
       } else {
         res.json(errObj);
       }
