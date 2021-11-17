@@ -1,32 +1,16 @@
 //--------------------------------------------------------------------- Imports
 const express = require('express');
-const handlebars = require('express-handlebars');
 const cors = require('cors');
 //const { config } = require('./config');
-const serverRoutes = require('./routes');
+const { productServerRoutes } = require('./routes/product');
+const { cartServerRoutes } = require('./routes/cart');
 
 //--------------------------------------------------------------------- Initializations
 const app = express()
 
 //--------------------------------------------------------------------- Settings
-//Handlebars
-// app.engine('handlebars', handlebars({
-//     extname: 'handlebars',
-//     defaultLayout: 'index.handlebars',
-//     layoutsDir: __dirname + '/views/hbs',
-//     partialsDir: __dirname + '/views/hbs/partials'
-//   })
-// );
-
-// app.set('views', './views/hbs');
-// app.set('view engine', 'handlebars');
-
-//Pug
-// app.set('views', './views/pug');
-// app.set('view engine', 'pug');
-
 //EJS
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');
 
 
 //--------------------------------------------------------------------- Middlewares
@@ -39,8 +23,8 @@ app.use('', express.static(__dirname + '/public'));
 const PORT = 8088;
 
 //--------------------------------------------------------------------- Routes
-serverRoutes(app);
-
+productServerRoutes(app);
+cartServerRoutes(app);
 
 //--------------------------------------------------------------------- Listen
 app.listen(PORT, () => {
